@@ -17,7 +17,7 @@ pipeSouth.src = "images/pipeSouth.png";
 
 
 // some variables
-var gap = 100;
+var gap = 110;
 var constant;
 var bX = 10;
 var bY = 150;
@@ -27,9 +27,10 @@ var score = 0;
 // audio files
 var fly = new Audio();
 var scor = new Audio();
-fly.src = "sounds/fly.mp3";
-scor.src = "sounds/score.mp3";
-
+var death = new Audio();
+fly.src = "sounds/sounds_fly.mp3";
+scor.src = "sounds/sounds_score.mp3";
+death.src = "sounds/sounds_death.mp3";
 // on key down
 document.addEventListener("keydown",moveUp);
 function moveUp(){
@@ -64,6 +65,7 @@ function draw(){
         // detect collision
         if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){
             location.reload(); // reload the page
+            death.play();
         }
 
         if(pipe[i].x == 5){
@@ -78,8 +80,8 @@ function draw(){
 
     bY += gravity;
 
-    ctx.fillStyle = "#FF2500";
-    ctx.font = "20px Trebucet";
+    ctx.fillStyle = "black";
+    ctx.font = "20px Trebuchet MS";
     ctx.fillText("Score : "+score,10,cvs.height-20);
     requestAnimationFrame(draw);
 
