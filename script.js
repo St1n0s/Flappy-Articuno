@@ -2,7 +2,7 @@ var cvs = document.getElementById("canvas");
 
 var ctx = cvs.getContext("2d");
 
-// load images
+// Load images
 var bird = new Image();
 var bg = new Image();
 var fg = new Image();
@@ -16,7 +16,7 @@ pipeNorth.src = "images/pipeNorth.png";
 pipeSouth.src = "images/pipeSouth.png";
 
 
-// some variables
+// Game variables
 var gap = 110;
 var constant;
 var bX = 10;
@@ -24,7 +24,7 @@ var bY = 150;
 var gravity = 1.5;
 var score = 0;
 
-// audio files
+// Audio files
 var fly = new Audio();
 var scor = new Audio();
 var death = new Audio();
@@ -34,18 +34,18 @@ death.src = "sounds/sounds_death.mp3";
 // on key down
 document.addEventListener("keydown",moveUp);
 function moveUp(){
-    bY -= 30;
+    bY -= 50;
     fly.play();
 }
 
-// pipe coordinates
+// Pipe coordinates
 var pipe = [];
 pipe[0] = {
     x : cvs.width,
     y : 0
 };
 
-// draw images
+// Draw images
 function draw(){
     ctx.drawImage(bg,0,0);
 
@@ -62,9 +62,9 @@ function draw(){
             });
         }
 
-        // detect collision
+        // Collision detection
         if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){
-            location.reload(); // reload the page
+            location.reload(); // Page reload
             death.play();
         }
 
