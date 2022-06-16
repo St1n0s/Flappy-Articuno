@@ -80,11 +80,17 @@ function draw(){
 
     bY += gravity;
 
+    //styling
+    var grd = ctx.createLinearGradient(0, 0, 200, 0);
+    grd.addColorStop(0, "white");
+    grd.addColorStop(1, "white");
+
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 462, 83, 50);
     ctx.fillStyle = "black";
     ctx.font = "20px Trebuchet MS";
-    ctx.fillText("Score : "+score,10,cvs.height-20);
+    ctx.fillText("Score : "+score, 1, 2+cvs.height-20);
     requestAnimationFrame(draw);
-
 }
 
 draw();
