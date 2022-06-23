@@ -72,7 +72,6 @@ function draw(){
             score++;
             scor.play();
         }
-
     }
 
     ctx.drawImage(fg,0,cvs.height - fg.height);
